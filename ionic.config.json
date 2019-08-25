@@ -1,5 +1,7 @@
 {
   "name": "camera",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
