@@ -12,6 +12,8 @@ export class HomePage {
 
   currentImage: any;
   intro = true;
+  showImage = false;
+  thanks = false;
 
   constructor(private camera: Camera) { }
 
@@ -28,6 +30,8 @@ export class HomePage {
 
     this.camera.getPicture(options).then((imageData) => {
       this.intro = false;
+      this.showImage = true;
+
       this.currentImage = 'data:image/jpeg;base64,' + imageData;
 
       console.log(this.currentImage);
@@ -42,10 +46,16 @@ export class HomePage {
   publishPicture(publish: boolean) {
     if (publish) {
       console.log('yeah');
-      this.currentImage = null;
-      this.intro = true;
     } else {
       console.log('goFuckYourself');
     }
+
+    this.currentImage = null;
+    this.showImage = false;
+    this.thanks = true;
+    setTimeout(() => {
+      this.thanks = false;
+      this.intro = true;
+    }, 2000);
   }
 }
