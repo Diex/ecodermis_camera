@@ -17,12 +17,15 @@ import { RouteReuseStrategy } from '@angular/router';
 import { Camera } from '@ionic-native/camera/ngx';
 import { NavigationBar } from '@ionic-native/navigation-bar/ngx';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [AppComponent], //The declarations array is available for you to add declarables, which are components, directives, and pipes that belong exclusively to this particular module.
+  declarations: [AppComponent],
+  // The declarations array is available for you to add declarables,
+  // which are components, directives, and pipes that belong exclusively to this particular module.
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-    providers: [
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  providers: [
     StatusBar,
     SplashScreen,
     Camera,
@@ -31,4 +34,4 @@ import { NavigationBar } from '@ionic-native/navigation-bar/ngx';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

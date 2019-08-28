@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { UploaderService } from '../api/uploader.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class HomePage {
   showImage = false;
   thanks = false;
 
-  constructor(private camera: Camera) { }
+  constructor(private camera: Camera, private uploader: UploaderService) { }
 
   takePicture() {
 
@@ -34,8 +35,8 @@ export class HomePage {
 
       this.currentImage = 'data:image/jpeg;base64,' + imageData;
 
-      console.log(this.currentImage);
-      console.log('blabla');
+      // console.log(this.currentImage);
+      // console.log('blabla');
 
     }, (err) => {
      // Handle error
@@ -45,9 +46,9 @@ export class HomePage {
 
   publishPicture(publish: boolean) {
     if (publish) {
-      console.log('yeah');
+      this.uploader.upload(this.currentImage, true);
     } else {
-      console.log('goFuckYourself');
+      this.uploader.upload(this.currentImage, false);
     }
 
     this.currentImage = null;
