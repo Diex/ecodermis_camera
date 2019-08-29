@@ -32,12 +32,7 @@ export class HomePage {
     this.camera.getPicture(options).then((imageData) => {
       this.intro = false;
       this.showImage = true;
-
       this.currentImage = 'data:image/jpeg;base64,' + imageData;
-
-      // console.log(this.currentImage);
-      // console.log('blabla');
-
     }, (err) => {
      // Handle error
      console.log('Camera issue: ' + err);
